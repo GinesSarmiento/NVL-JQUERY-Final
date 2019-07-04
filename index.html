@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>NVL-JQUERY-Final</title>
+	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<style type="text/css">
+		#titulo{
+			text-align: center;
+			margin-top: 25px;
+			color: #8F8C8A;
+		}
+		#contenedor, #ganador, #empate{
+			width: 666px;
+			height: 330px;
+			display: block;
+			margin:50px auto 0px auto;
+		}
+		table, #controles{
+			width: 325px;
+			height: 325px;
+			display: block;
+			margin:0px auto 0px auto;
+			border:1px solid #8F8C8A;
+			float:right;
+		}
+		td{
+			width: 100px;
+			height: 100px;
+			border:1px solid #8F8C8A;
+			text-align: center;
+			vertical-align: middle;
+			font-size: 4em;
+			margin:auto auto auto auto;
+			background-size: 0%;
+			background-repeat: no-repeat;
+		}
+		.seleccionado{
+			border:4px solid #8F8C8A;
+		}
+		td[value="X"]{
+			background-image:url("images/X.png");
+			background-size: 100%;
+			-webkit-transition: all 2s cubic-bezier(0, 1, 0.5, 1);
+			-moz-transition: all 2s cubic-bezier(0, 1, 0.5, 1);
+			-o-transition: all 2s cubic-bezier(0, 1, 0.5, 1);
+			transition: all 2s cubic-bezier(0, 1, 0.5, 1);
+		}
+		td[value="O"]{
+			background-image:url("images/O.png");
+			background-size: 100%;
+			-webkit-transition: all 2s cubic-bezier(0, 1, 0.5, 1);
+			-moz-transition: all 2s cubic-bezier(0, 1, 0.5, 1);
+			-o-transition: all 2s cubic-bezier(0, 1, 0.5, 1);
+			transition: all 2s cubic-bezier(0, 1, 0.5, 1);
+		}
+		.jugador{
+			width: 150px;
+			display: block;
+			float: left;
+			text-align: center;
+			margin: 25px 5px 0px 5px;
+		}
+		.boton input{
+			display: block;
+			float: left;
+			background-color: #8F8C8A;
+			margin: 9px 6.5px 6px 6px;
+			height: 40px;
+			width: 150px;
+			font-size: 1em;
+			color:white;
+			border-style: none;
+		}
+		#jugadorX{
+			color: #00A08A;
+		}
+
+		#jugadorO{
+			color: #BB008B;
+		}
+		#nombreX{
+			color: #00A08A;
+			text-align: center;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 1em;
+			height: 20px;
+			width: 150px;
+		}
+		#nombreO{
+			color: #BB008B;
+			text-align: center;
+			text-align: center;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 1em;
+			height: 20px;
+			width: 150px;
+		}
+		#ganador{
+			border:1px solid #8F8C8A;
+			padding-top: 75px;
+			height: 250px;
+			display: none;
+			background-image: url("images/confetti.png");
+			background-repeat: no-repeat;
+			background-size: 100%;
+		}
+		#ganador h1, #empate h1{
+			text-align: center;
+			margin-top: 25px;
+		}
+		#empate{
+			border:1px solid #8F8C8A;
+			padding-top: 75px;
+			height: 250px;
+			display: none;
+			color:#8F8C8A;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="titulo">Tres en raya</h1>
+	<div id="contenedor">
+		<table>
+			<tr class="f1">
+				<td class="c1"></td>
+				<td class="c2"></td>
+				<td class="c3"></td>
+			</tr>
+			<tr class="f2">
+				<td class="c1"></td>
+				<td class="c2 seleccionado"></td>
+				<td class="c3"></td>
+			</tr>
+			<tr class="f3">
+				<td class="c1"></td>
+				<td class="c2"></td>
+				<td class="c3"></td>
+			</tr>
+		</table>
+		<div id="controles">
+			<form id="generado">
+
+				<div class="jugador" id="jugadorX">
+					<h1>X</h1>
+					<label for="Nombre X" class="etiqueta-nombre">Nombre</label>
+					<input class="input-nombre" id="nombreX" type="text" name="Nombre X">
+					<h3>Puntuación</h3>
+					<h2 id="puntosX">0</h2>
+				</div>
+				<div class="jugador" id="jugadorO">
+					<h1>0</h1>
+					<label for="Nombre O" class="etiqueta-nombre">Nombre</label>
+					<input class="input-nombre" id="nombreO" type="text" name="Nombre O">
+					<h3>Puntuación</h3>
+					<h2 id="puntosO">0</h2>
+				</div>
+				<div class="boton">
+					<input id="b-tablero" type="button" value="Resetear tablero">
+				</div>
+				<div class="boton">
+					<input id="b-puntos" type="button" value="Resetear puntos">
+				</div>
+			</form>
+		</div>
+	</div>
+	<div id="ganador">
+		<h1>!!Enhorabuena¡¡</h1>
+		<h1 id="nombre_ganador">X</h1>
+		<h1>!!!HAS GANADO¡¡¡</h1>
+	</div>
+	<div id="empate">
+		<h1>!!Tablas!!</h1>
+		<h1>¡¡¡Habeis EMPATADO!!!</h1>
+		<h1>Volved a intentarlo</h1>
+	</div>
+
+</body>
+</html>
